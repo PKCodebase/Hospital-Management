@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/patients")
-@CrossOrigin(origins = "*")
 public class PatientController {
     
     @Autowired
@@ -21,7 +21,7 @@ public class PatientController {
         return ResponseEntity.ok(patientService.savePatient(patient));
     }
     
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Patient>> getAllPatients() {
         return ResponseEntity.ok(patientService.getAllPatients());
     }
