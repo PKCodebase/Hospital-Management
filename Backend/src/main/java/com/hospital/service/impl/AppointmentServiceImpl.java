@@ -22,6 +22,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointments saveAppointments(Appointments appointments) {
+        appointments.setId(null);
         return appointmentsRepository.save(appointments);
     }
 

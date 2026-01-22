@@ -29,6 +29,16 @@ export class AdminDash implements OnInit {
     });
   }
 
+  delete(id:number){
+    this.patientService.deletePatient(id).subscribe({
+      next:(data)=>{
+        console.log("Patient deleted successfully");
+        this.cdr.detectChanges();
+        this.getAllPatients();
+      }
+    })
+  }
+
 
 
 }

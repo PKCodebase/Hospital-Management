@@ -52,6 +52,7 @@
         <th>Blood Group</th>
         <th>Dose</th>
         <th>Urgency</th>
+        <th>Action</th>
       
         <!-- <th>Action</th> -->
       </tr>
@@ -64,6 +65,9 @@
         <td>{{patient.blood}}</td>
         <td>{{patient.dose}}</td>
         <td>{{patient.urgency}}</td>
+        <td>
+        <button (click)="delete(patient.id)" class="btn btn-danger">Delete</button>
+        </td>
         
         <td>
           

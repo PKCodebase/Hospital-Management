@@ -2,6 +2,7 @@
 
     import com.hospital.entity.doclogin.Appointments;
     import com.hospital.service.AppointmentService;
+    import jakarta.validation.Valid;
     import org.springframework.http.ResponseEntity;
     import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,8 @@
         }
 
         @PostMapping("/insert")
-        public ResponseEntity<Appointments> createAppointments(@RequestBody Appointments appointments) {
-            appointments.setId(null);   // ✅ MOST IMPORTANT LINE
+        public ResponseEntity<Appointments> createAppointments(@Valid @RequestBody Appointments appointments) {
+//            appointments.setId(null);   // ✅ MOST IMPORTANT LINE
         return ResponseEntity.ok(appointmentService.saveAppointments(appointments));
         }
 
@@ -40,7 +41,7 @@
         }
 
         @PutMapping("/{id}")
-        public ResponseEntity<Appointments> updateAppointmentsById(@PathVariable Long id,@RequestBody Appointments appointments){
+        public ResponseEntity<Appointments> updateAppointmentsById(@PathVariable Long id,@Valid @RequestBody Appointments appointments){
             return ResponseEntity.ok(appointmentService.updateAppointment(id,appointments));
         }
 
