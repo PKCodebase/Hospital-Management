@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { AdminDash } from './admin-dash/admin-dash';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Appointment } from './appointment/appointment';
+import { CreateAppointment } from './create-appointment/create-appointment';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     App,
-    AdminDash
+    AdminDash,
+    Appointment,
+    CreateAppointment
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

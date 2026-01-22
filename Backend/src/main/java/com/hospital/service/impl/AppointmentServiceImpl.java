@@ -4,10 +4,12 @@ import com.hospital.entity.doclogin.Appointments;
 import com.hospital.exception.ResourceNotFound;
 import com.hospital.repository.AppointmentsRepository;
 import com.hospital.service.AppointmentService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Transactional
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
