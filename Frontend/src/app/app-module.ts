@@ -8,13 +8,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Appointment } from './appointment/appointment';
 import { CreateAppointment } from './create-appointment/create-appointment';
 import { FormsModule } from '@angular/forms';
+import { Home } from './home/home';
 
 @NgModule({
   declarations: [
     App,
     AdminDash,
     Appointment,
-    CreateAppointment
+    CreateAppointment,
+    Home
   ],
   imports: [
     BrowserModule,
