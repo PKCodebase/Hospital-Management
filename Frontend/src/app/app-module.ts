@@ -9,6 +9,9 @@ import { Appointment } from './appointment/appointment';
 import { CreateAppointment } from './create-appointment/create-appointment';
 import { FormsModule } from '@angular/forms';
 import { Home } from './home/home';
+import { Footer } from './footer/footer';
+import { Docdash } from './docdash/docdash';
+import { CreatePatient } from './create-patient/create-patient';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { Home } from './home/home';
     AdminDash,
     Appointment,
     CreateAppointment,
-    Home
+    Home,
+    Footer,
+    Docdash,
+    CreatePatient
   ],
   imports: [
     BrowserModule,

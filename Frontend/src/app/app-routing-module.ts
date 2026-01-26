@@ -4,13 +4,17 @@ import { AdminDash } from './admin-dash/admin-dash';
 import { Appointment } from './appointment/appointment';
 import { CreateAppointment } from './create-appointment/create-appointment';
 import { Home } from './home/home';
+import { Docdash } from './docdash/docdash';
+import { CreatePatient } from './create-patient/create-patient';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'admin',component:AdminDash},
   {path:'appointmentlist',component:Appointment},
   {path:'create-appointment',component:CreateAppointment},
-  {path:'home',component:Home}
+  {path:'home',component:Home},
+  {path:'docdash',component:Docdash},
+  {path:'create-patient',component:CreatePatient}
 ];
 
 @NgModule({
