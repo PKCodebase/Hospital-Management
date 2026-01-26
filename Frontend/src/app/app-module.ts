@@ -12,6 +12,11 @@ import { Home } from './home/home';
 import { Footer } from './footer/footer';
 import { Docdash } from './docdash/docdash';
 import { CreatePatient } from './create-patient/create-patient';
+import { Medicinelist } from './medicinelist/medicinelist';
+import { Medicine } from './class/medicine';
+import { CreateMedicine } from './create-medicine/create-medicine';
+import { UpdatePatient } from './update-patient/update-patient';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { CreatePatient } from './create-patient/create-patient';
     Home,
     Footer,
     Docdash,
-    CreatePatient
+    CreatePatient,
+    Medicinelist,
+    CreateMedicine,
+    UpdatePatient
   ],
   imports: [
     BrowserModule,

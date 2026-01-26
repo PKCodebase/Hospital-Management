@@ -13,7 +13,7 @@
 
 
         <li class="nav-item">
-            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/appointmentlist">Medicines</a>
+            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/medicines">Medicines</a>
           </li>
 
         
@@ -29,15 +29,16 @@
     </div>
   
   </nav>
+<div class="grid">
 <div class="container">
-  <hr>
-    <h2 style="text-align: center;margin-top: 20PX;">Admin Dashboard</h2>
+ 
+    <h2 style="text-align: center;margin-top: 20PX;">PATIENTS</h2>
     <a style="color: rgb(86, 86, 86); font-size: x-large;"><marquee behavior="scroll" direction="left">
       Welcome to Admin Dashboard. Please find the patient list below!!. Click Appointments to view and update Appointments, Click Add Appointment to add new Appointment</marquee></a>
-  <hr>
+  
   <!-- <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search" (input)="searchPatients()">  -->
   <br>
-    <a style="color: rgb(86, 86, 86); font-size: xx-large;">Current Patient List in the Queue</a>
+    <a style="color: rgb(86, 86, 86); font-size: xx-large;">Patient List</a>
 <div class="tableFixHead">
   <br>
   <table class="table table-striped">
@@ -50,7 +51,7 @@
         
         
         <th>Blood Group</th>
-        <th>Dose</th>
+        <!-- <th>Dose</th> -->
         <th>Urgency</th>
         <th>Action</th>
       
@@ -63,9 +64,10 @@
         <td>{{patient.name}}</td>
         <td>{{patient.age}}</td>
         <td>{{patient.blood}}</td>
-        <td>{{patient.dose}}</td>
+        <!-- <td>{{patient.dose}}</td> -->
         <td>{{patient.urgency}}</td>
         <td>
+            <button (click)="update(patient.id)" class="btn btn-success">Update</button>
         <!-- <button (click)="delete(patient.id)" class="btn btn-danger">Delete</button> -->
         </td>
         
@@ -78,4 +80,6 @@
   </table>
   </div>
 </div>
+</div>
+
 

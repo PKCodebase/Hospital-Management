@@ -22,6 +22,7 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     public Medicine addMedicine(Medicine medicine) {
+        medicine.setId(null); // 👈 prevent id injection
         return medicineRepository.save(medicine);
     }
 

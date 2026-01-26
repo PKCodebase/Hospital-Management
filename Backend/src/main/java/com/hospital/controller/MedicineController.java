@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/medicines")
+    @RequestMapping("/api/medicines")
 public class MedicineController {
 
     private final MedicineService medicineService;
@@ -23,7 +23,7 @@ public class MedicineController {
         return ResponseEntity.ok(medicineService.addMedicine(medicine));
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Medicine>> getAllMedicines(){
         return ResponseEntity.ok(medicineService.getAllMedicine());
     }

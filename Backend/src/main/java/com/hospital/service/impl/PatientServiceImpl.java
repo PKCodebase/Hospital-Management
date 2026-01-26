@@ -18,7 +18,7 @@ public class PatientServiceImpl implements PatientService {
     
     @Override
     public Patient savePatient(Patient patient) {
-
+        patient.setId(null);
         return patientRepository.save(patient);
 
     }
@@ -36,9 +36,16 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient updatePatient(Long id, Patient patient) {
+    public Patient updatePatient(Long id, Patient patients) {
         Patient existingPatient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFound("Patient not found with id: " + id));
+        existingPatient.setName(patients.getName());
+        existingPatient.setAge(patients.getAge());
+        existingPatient.setBlood(patients.getBlood());
+        existingPatient.setPrescription(patients.getPrescription());
+        existingPatient.setDose(patients.getDose());
+        existingPatient.setFees(patients.getFees());
+        existingPatient.setUrgency(patients.getUrgency());
         return patientRepository.save(existingPatient);
     }
 

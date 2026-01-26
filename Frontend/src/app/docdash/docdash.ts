@@ -1,6 +1,7 @@
 import { Component,OnInit, ChangeDetectorRef } from '@angular/core';
 import { Patient } from '../class/patient';
 import { PatientService } from '../service/patient.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { PatientService } from '../service/patient.service';
 export class Docdash {
     patients:Patient[] =[];
 
-     constructor(private patientService:PatientService, private cdr: ChangeDetectorRef ){}
+     constructor(private patientService:PatientService, private cdr: ChangeDetectorRef,private router:Router ){}
 
      ngOnInit():void{
         this.getPatients();
@@ -28,6 +29,10 @@ export class Docdash {
         console.error("API Error:", error);
       }
     });
+  }
+
+  update(id:number){
+    this.router.navigate(['update-patient',id]);
   }
 
      
