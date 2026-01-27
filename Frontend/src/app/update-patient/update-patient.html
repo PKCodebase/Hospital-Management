@@ -1,1 +1,47 @@
-<p>update-patient works!</p>
+<div class="container">
+
+    <h2 class="text-center">Update Patient</h2>
+
+    <form (ngSubmit)="onSubmit()"> 
+
+      <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="patient.name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label>Age</label>
+    <input class="form-control" [(ngModel)]="patient.age" name="age">
+  </div>
+
+  <div class="form-group">
+    <label>Blood Group</label>
+    <input class="form-control" [(ngModel)]="patient.blood" name="blood">
+  </div>
+
+  <div class="form-group">
+    <label>Prescription</label>
+    <input class="form-control" [(ngModel)]="patient.prescription" name="prescription">
+  </div>
+
+  <div class="form-group">
+    <label>Dose</label>
+    <input class="form-control" [(ngModel)]="patient.dose" name="dose">
+  </div>
+
+  <div class="form-group">
+    <label>Fees</label>
+    <input class="form-control" [(ngModel)]="patient.fees" name="fees">
+  </div>
+
+  <div class="form-group">
+    <label>Urgency</label>
+    <input class="form-control" [(ngModel)]="patient.urgency" name="urgency">
+  </div>
+  <br>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+
+</div>
