@@ -35,5 +35,25 @@ export class Docdash {
     this.router.navigate(['update-patient',id]);
   }
 
+ delete(id: number) {
+  if (confirm('Are you sure you want to delete this patient?')) {
+    this.patientService.deletePatient(id).subscribe({
+      next: () => {
+        alert('Patient deleted successfully');
+        this.getPatients();
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Failed to delete patient');
+      }
+    });
+  }
+}
+
+
+  view(id:number){
+    this.router.navigate(['view-patient',id]);
+  }
+
      
 }

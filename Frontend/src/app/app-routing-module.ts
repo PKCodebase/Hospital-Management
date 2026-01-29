@@ -9,6 +9,8 @@ import { CreatePatient } from './create-patient/create-patient';
 import { Medicinelist } from './medicinelist/medicinelist';
 import { CreateMedicine } from './create-medicine/create-medicine';
 import { UpdatePatient } from './update-patient/update-patient';
+import { ViewComponent } from './view-component/view-component';
+import { UpdateMedicine } from './update-medicine/update-medicine';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:'create-patient',component:CreatePatient},
   {path:'medicines',component:Medicinelist},
   {path:'create-medicine',component:CreateMedicine},
-  {path:'update-patient/:id',component:UpdatePatient}
+  {path:'update-patient/:id',component:UpdatePatient},
+  {path:'view-patient/:id',component:ViewComponent},
+  {path:"update-medicine/:id",component:UpdateMedicine}
 ];
 
 @NgModule({

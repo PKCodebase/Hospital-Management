@@ -5,7 +5,9 @@ import com.hospital.service.MedicineService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -39,8 +41,10 @@ public class MedicineController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteMedicineById(@PathVariable Long id){
+    public ResponseEntity<Map<String,Boolean>> deleteMedicineById(@PathVariable Long id){
         medicineService.deleteMedicineById(id);
-        return ResponseEntity.ok("Deleted Successfully");
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("Deleted",Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

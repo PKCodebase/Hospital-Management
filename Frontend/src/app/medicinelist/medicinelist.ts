@@ -1,5 +1,8 @@
-import { Component, OnInit,ChangeDetectorRef} from '@angular/core';import { MedicineSercvice } from '../service/medicine.service';
+import { Component, OnInit,ChangeDetectorRef} from '@angular/core';
+import { Router } from '@angular/router';
+import { MedicineService } from '../service/medicine.service';
 import { Medicine } from '../class/medicine';
+
 
 @Component({
   selector: 'app-medicinelist',
@@ -9,9 +12,12 @@ import { Medicine } from '../class/medicine';
 })
 export class Medicinelist implements OnInit {
 
+  
+  
+
 
   medicines:Medicine[]=[];
-  constructor(private medicineService:MedicineSercvice,private cdr: ChangeDetectorRef){}
+  constructor(private medicineService:MedicineService,private cdr: ChangeDetectorRef,private router:Router){}
 
   ngOnInit():void{
     this.getMedicines();
@@ -31,4 +37,27 @@ export class Medicinelist implements OnInit {
      });
   }
 
+  update(id:number){
+     this.router.navigate(['update-medicine',id]);
+  }
+
+  delete(id:number){
+      if(confirm('Are you sure you want to delete this medicine?')){
+        console.log('Deleting medicine with ID:', id);
+        this.medicineService.deleteMedicine(id).subscribe({
+          next:(response)=>{
+            console.log('Delete response:', response);
+            alert('Medicine deleted successfully');
+            this.getMedicines();
+          },
+          error:(err) =>{
+            console.error('Delete error details:', err);
+            console.error('Error status:', err.status);
+            console.error('Error message:', err.message);
+            alert(`Failed to delete medicine: ${err.error?.message || err.message}`);
+          }
+        });
+  }
+
+}
 }

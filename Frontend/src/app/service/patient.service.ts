@@ -25,6 +25,13 @@ export class PatientService {
     return this.httpClient.post<Patient>(`${this.baseUrl}/insert`,patient);
   }
 
+  getPatientById(id: number): Observable<Patient> {
+  return this.httpClient.get<Patient>(`${this.baseUrl}/${id}`);
+  }
 
+
+  updatePatientById(id:number,patient:Patient):Observable<Object>{
+    return this.httpClient.put(`${this.baseUrl}/${id}`,patient);
+  }
   
 }
