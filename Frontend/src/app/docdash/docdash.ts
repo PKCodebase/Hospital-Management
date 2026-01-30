@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class Docdash {
     patients:Patient[] =[];
+    searchText: string = '';
+    currentDate = new Date();
 
      constructor(private patientService:PatientService, private cdr: ChangeDetectorRef,private router:Router ){}
 
@@ -23,6 +25,8 @@ export class Docdash {
      this.patientService.getPatientList().subscribe({
       next: (data) => {
         this.patients = data;
+        console.log('Patients data:', data);
+        console.log('First patient:', data[0]);
         this.cdr.detectChanges();
       },
       error: (error) => {
@@ -53,6 +57,14 @@ export class Docdash {
 
   view(id:number){
     this.router.navigate(['view-patient',id]);
+  }
+
+  searchPatients() {
+    // Search functionality can be implemented here
+  }
+
+  getHighUrgencyCount() {
+    return this.patients.filter(p => p.urgency === 'High' || p.urgency === 'HIGH').length;
   }
 
      

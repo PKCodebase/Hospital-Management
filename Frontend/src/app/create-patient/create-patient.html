@@ -1,76 +1,311 @@
-<nav style="margin:auto" class="navbar navbar-expand-lg bg-dark">
-        
-    <a style="color: white;" class="navbar-brand" href="#">24/7 HOSPITALS</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">
+      <span class="text-primary">24/7</span> HOSPITALS
+    </a>
+    
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-          <!-- <li class="nav-item">
-            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/create-appointment">Add Appoitnment</a>
-          </li> -->
-
-
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/docdash">Back</a>
-          </li>
-
-        
-        
+          <a class="nav-link btn btn-outline-light btn-sm me-2" routerLink="/docdash">
+            <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-danger btn-sm" routerLink="/home">
+            <i class="bi bi-box-arrow-right me-1"></i>Logout
+          </button>
+        </li>
       </ul>
-
-      <div class="mx-2">
-        
-        <button style="margin: 5px;"class="btn btn-danger" data-toggle="modal" data-target="#loginModal"><a style="color:white;" href="javascript:void(0);" routerLink="/home">Logout</a></button>
-        
     </div>
-      
+  </div>
+</nav>
+
+<div class="container-fluid py-5 bg-light min-vh-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <!-- Form Card -->
+        <div class="card border-0 shadow-lg overflow-hidden">
+          <!-- Card Header -->
+          <div class="card-header bg-primary text-white py-4">
+            <div class="d-flex align-items-center">
+              <div class="bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                <i class="bi bi-person-plus-fill fs-4"></i>
+              </div>
+              <div>
+                <h2 class="card-title mb-1 fw-bold">Add New Patient</h2>
+                <p class="card-subtitle mb-0 opacity-75">Complete patient registration form</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="card-body p-4 p-md-5">
+            <form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+              <div class="row">
+                <!-- Personal Information Column -->
+                <div class="col-md-6">
+                  <h5 class="fw-semibold text-primary mb-4 pb-2 border-bottom">
+                    <i class="bi bi-person-badge me-2"></i>Personal Information
+                  </h5>
+                  
+                  <!-- Name Field -->
+                  <div class="mb-4">
+                    <label for="name" class="form-label fw-semibold">
+                      Full Name *
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-person text-muted"></i>
+                      </span>
+                      <input type="text" 
+                             class="form-control border-start-0" 
+                             id="name"
+                             [(ngModel)]="patient.name" 
+                             name="name"
+                             placeholder="Enter patient's full name"
+                             required>
+                    </div>
+                    <div class="form-text text-muted mt-2">
+                      <small>
+                        <i class="bi bi-info-circle me-1"></i>
+                        Enter patient's complete name
+                      </small>
+                    </div>
+                  </div>
+
+                  <!-- Age Field -->
+                  <div class="mb-4">
+                    <label for="age" class="form-label fw-semibold">
+                      Age *
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-calendar3 text-muted"></i>
+                      </span>
+                      <input type="number" 
+                             class="form-control border-start-0" 
+                             id="age"
+                             [(ngModel)]="patient.age" 
+                             name="age"
+                             placeholder="Enter age"
+                             min="0"
+                             max="120"
+                             required>
+                      <span class="input-group-text bg-light">Years</span>
+                    </div>
+                  </div>
+
+                  <!-- Blood Group Field -->
+                  <div class="mb-4">
+                    <label for="blood" class="form-label fw-semibold">
+                      Blood Group *
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-droplet text-muted"></i>
+                      </span>
+                      <select class="form-select border-start-0" 
+                              id="blood"
+                              [(ngModel)]="patient.blood" 
+                              name="blood"
+                              required>
+                        <option value="" disabled selected>Select blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Medical Information Column -->
+                <div class="col-md-6">
+                  <h5 class="fw-semibold text-primary mb-4 pb-2 border-bottom">
+                    <i class="bi bi-heart-pulse me-2"></i>Medical Information
+                  </h5>
+
+                  <!-- Prescription Field -->
+                  <div class="mb-4">
+                    <label for="prescription" class="form-label fw-semibold">
+                      Prescription
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-prescription2 text-muted"></i>
+                      </span>
+                      <input type="text" 
+                             class="form-control border-start-0" 
+                             id="prescription"
+                             [(ngModel)]="patient.prescription" 
+                             name="prescription"
+                             placeholder="Enter prescribed medication">
+                    </div>
+                  </div>
+
+                  <!-- Dose Field -->
+                  <div class="mb-4">
+                    <label for="dose" class="form-label fw-semibold">
+                      Dose
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-capsule text-muted"></i>
+                      </span>
+                      <input type="text" 
+                             class="form-control border-start-0" 
+                             id="dose"
+                             [(ngModel)]="patient.dose" 
+                             name="dose"
+                             placeholder="e.g., 500mg twice daily">
+                    </div>
+                  </div>
+
+                  <!-- Fees Field -->
+                  <div class="mb-4">
+                    <label for="fees" class="form-label fw-semibold">
+                      Consultation Fees *
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-currency-rupee text-muted"></i>
+                      </span>
+                      <input type="number" 
+                             class="form-control border-start-0" 
+                             id="fees"
+                             [(ngModel)]="patient.fees" 
+                             name="fees"
+                             placeholder="Enter consultation fees"
+                             min="0"
+                             required>
+                      <span class="input-group-text bg-light">₹</span>
+                    </div>
+                  </div>
+
+                  <!-- Urgency Field -->
+                  <div class="mb-4">
+                    <label for="urgency" class="form-label fw-semibold">
+                      Urgency Level *
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-exclamation-triangle text-muted"></i>
+                      </span>
+                      <select class="form-select border-start-0" 
+                              id="urgency"
+                              [(ngModel)]="patient.urgency" 
+                              name="urgency"
+                              required>
+                        <option value="" disabled selected>Select urgency level</option>
+                        <option value="Low">Low Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="High">High Priority</option>
+                        <option value="Critical">Critical</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="row mt-5">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between border-top pt-4">
+                    <button type="button" 
+                            class="btn btn-outline-secondary px-4" 
+                            routerLink="/docdash">
+                      <i class="bi bi-x-circle me-2"></i>
+                      Cancel
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-primary px-4"
+                            [disabled]="!patientForm.form.valid">
+                      <i class="bi bi-check-circle me-2"></i>
+                      Save Patient Record
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Instructions -->
+              <div class="alert alert-light border mt-4">
+                <div class="d-flex">
+                  <i class="bi bi-info-circle-fill text-primary fs-5 me-3"></i>
+                  <div>
+                    <h6 class="alert-heading mb-2">Form Instructions</h6>
+                    <ul class="mb-0 text-muted small">
+                      <li>Fields marked with * are required</li>
+                      <li>Ensure all medical information is accurate</li>
+                      <li>Review patient details before submission</li>
+                      <li>Critical patients will be prioritized for immediate attention</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <!-- <div class="row mt-4">
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm bg-light">
+              <div class="card-body py-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-info bg-opacity-10 rounded-circle p-2 me-3">
+                    <i class="bi bi-clock-history text-info"></i>
+                  </div>
+                  <div>
+                    <small class="text-muted d-block">Today's Patients</small>
+                    <span class="fw-semibold">0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm bg-light">
+              <div class="card-body py-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                    <i class="bi bi-check-circle text-success"></i>
+                  </div>
+                  <div>
+                    <small class="text-muted d-block">Total Registered</small>
+                    <span class="fw-semibold">0 Patients</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm bg-light">
+              <div class="card-body py-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
+                    <i class="bi bi-activity text-warning"></i>
+                  </div>
+                  <div>
+                    <small class="text-muted d-block">Avg. Consultation</small>
+                    <span class="fw-semibold">₹0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  
-  </nav>
-  <br>
-<div class="container">
-    <h2 class="text-center">Add new Patient</h2>
-   <form (ngSubmit)="onSubmit()">
-
-  <div class="form-group">
-    <label>Name</label>
-    <input class="form-control" [(ngModel)]="patient.name" name="name">
   </div>
-
-  <div class="form-group">
-    <label>Age</label>
-    <input class="form-control" [(ngModel)]="patient.age" name="age">
-  </div>
-
-  <div class="form-group">
-    <label>Blood Group</label>
-    <input class="form-control" [(ngModel)]="patient.blood" name="blood">
-  </div>
-
-  <div class="form-group">
-    <label>Prescription</label>
-    <input class="form-control" [(ngModel)]="patient.prescription" name="prescription">
-  </div>
-
-  <div class="form-group">
-    <label>Dose</label>
-    <input class="form-control" [(ngModel)]="patient.dose" name="dose">
-  </div>
-
-  <div class="form-group">
-    <label>Fees</label>
-    <input class="form-control" [(ngModel)]="patient.fees" name="fees">
-  </div>
-
-  <div class="form-group">
-    <label>Urgency</label>
-    <input class="form-control" [(ngModel)]="patient.urgency" name="urgency">
-  </div>
-  <br>
-
-  <button type="submit" class="btn btn-success">Save</button>
-</form>
-
-</div>
+</div> -->

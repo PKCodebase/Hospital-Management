@@ -1,78 +1,371 @@
-<nav style="margin:auto" class="navbar navbar-expand-lg bg-dark">
-        
-    <a style="color: white;" class="navbar-brand" href="#">24/7 HOSPITALS</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">
+      <span class="text-primary">24/7</span> HOSPITALS
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-          <!-- <li class="nav-item">
-            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/create-appointment">Add Appoitnment</a>
-          </li> -->
-
-
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/docdash">Back</a>
-          </li>
-
-        
-        
+          <a class="nav-link btn btn-outline-light btn-sm me-2" routerLink="/docdash">
+            <i class="bi bi-arrow-left me-1"></i>Back
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-danger btn-sm" routerLink="/home">
+            <i class="bi bi-box-arrow-right me-1"></i>Logout
+          </button>
+        </li>
       </ul>
+    </div>
+  </div>
+</nav>
 
-      <div class="mx-2">
-        
-        <button style="margin: 5px;"class="btn btn-danger" data-toggle="modal" data-target="#loginModal"><a style="color:white;" href="javascript:void(0);" routerLink="/home">Logout</a></button>
-        
-    </div>
-      
-    </div>
-  
+<!-- Main Content -->
+<main class="container mt-5 pt-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb bg-light p-3 rounded-3">
+      <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Patients</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Update Patient</li>
+    </ol>
   </nav>
-<div class="container">
 
-    <h2 class="text-center">Update Patient</h2>
-
-    <form (ngSubmit)="onSubmit()"> 
-
-      <div class="form-group">
-    <label>Name</label>
-    <input class="form-control" [(ngModel)]="patient.name" name="name">
+  <!-- Page Header -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+          <h1 class="display-6 fw-bold text-primary">
+            <i class="bi bi-person-badge me-2"></i>Update Patient Record
+          </h1>
+          <p class="lead text-muted">Edit and manage patient medical information</p>
+        </div>
+        <!-- <div class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill p-3">
+          <i class="bi bi-shield-check me-1"></i>Secure Session
+        </div> -->
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>Age</label>
-    <input class="form-control" [(ngModel)]="patient.age" name="age">
+  <!-- Main Form Card -->
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-lg rounded-4 mb-4">
+        <div class="card-header bg-transparent border-0 pt-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="card-title fw-bold">
+              <i class="bi bi-clipboard2-pulse me-2"></i>Patient Information
+            </h3>
+            <!-- <span class="badge bg-primary bg-opacity-25 text-primary p-3 rounded-pill">
+              ID: MED-<span class="fw-bold">00123</span>
+            </span> -->
+          </div>
+        </div>
+        
+        <div class="card-body p-4 p-md-5">
+          <form (ngSubmit)="onSubmit()">
+            <div class="row">
+              <!-- Left Column -->
+              <div class="col-md-6">
+                <div class="mb-4">
+                  <h5 class="border-bottom pb-2 mb-4">
+                    <i class="bi bi-person-vcard me-2"></i>Personal Details
+                  </h5>
+                  
+                  <!-- Name -->
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      <i class="bi bi-person me-1 text-primary"></i>Full Name
+                    </label>
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-person text-primary"></i>
+                      </span>
+                      <input type="text" 
+                             class="form-control border-start-0 border-2 rounded-end"
+                             [(ngModel)]="patient.name" 
+                             name="name"
+                             placeholder="Patient's full name"
+                             required>
+                    </div>
+                    <div class="form-text text-muted mt-1">
+                      Legal name as per identification
+                    </div>
+                  </div>
+
+                  <!-- Age -->
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      <i class="bi bi-calendar3 me-1 text-primary"></i>Age
+                    </label>
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-calendar3 text-primary"></i>
+                      </span>
+                      <input type="number" 
+                             class="form-control border-start-0 border-2 rounded-end"
+                             [(ngModel)]="patient.age" 
+                             name="age"
+                             min="0"
+                             max="120"
+                             placeholder="Age in years"
+                             required>
+                      <span class="input-group-text bg-light">years</span>
+                    </div>
+                  </div>
+
+                  <!-- Blood Group -->
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      <i class="bi bi-droplet me-1 text-danger"></i>Blood Group
+                    </label>
+                    <div class="btn-group w-100" role="group">
+                      <input type="radio" class="btn-check" name="blood" id="bloodA" value="A+">
+                      <label class="btn btn-outline-danger border-2" for="bloodA">A+</label>
+                      
+                      <input type="radio" class="btn-check" name="blood" id="bloodB" value="B+">
+                      <label class="btn btn-outline-danger border-2" for="bloodB">B+</label>
+                      
+                      <input type="radio" class="btn-check" name="blood" id="bloodO" value="O+">
+                      <label class="btn btn-outline-danger border-2" for="bloodO">O+</label>
+                      
+                      <input type="radio" class="btn-check" name="blood" id="bloodAB" value="AB+">
+                      <label class="btn btn-outline-danger border-2" for="bloodAB">AB+</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column -->
+              <div class="col-md-6">
+                <div class="mb-4">
+                  <h5 class="border-bottom pb-2 mb-4">
+                    <i class="bi bi-heart-pulse me-2"></i>Medical Details
+                  </h5>
+                  
+                  <!-- Prescription -->
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      <i class="bi bi-prescription2 me-1 text-primary"></i>Prescription
+                    </label>
+                    <div class="input-group">
+                      <textarea class="form-control border-2 rounded-3" 
+                                [(ngModel)]="patient.prescription" 
+                                name="prescription"
+                                rows="3"
+                                placeholder="Enter prescription details"></textarea>
+                    </div>
+                    <div class="form-text text-muted mt-1">
+                      Include medication and instructions
+                    </div>
+                  </div>
+
+                  <!-- Dose & Fees -->
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="bi bi-capsule me-1 text-primary"></i>Dosage
+                        </label>
+                        <input type="text" 
+                               class="form-control form-control-lg border-2 rounded-3"
+                               [(ngModel)]="patient.dose" 
+                               name="dose"
+                               placeholder="e.g., 500mg BD">
+                      </div>
+                    </div>
+                    
+                    <div class="col-6">
+                      <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="bi bi-currency-rupee me-1 text-primary"></i>Fees
+                        </label>
+                        <div class="input-group input-group-lg">
+                          <span class="input-group-text bg-light">₹</span>
+                          <input type="number" 
+                                 class="form-control border-2 rounded-end"
+                                 [(ngModel)]="patient.fees" 
+                                 name="fees"
+                                 placeholder="0.00"
+                                 step="0.01">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Urgency -->
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      <i class="bi bi-activity me-1 text-primary"></i>Urgency Level
+                    </label>
+                    <select class="form-select form-select-lg border-2 rounded-3" 
+                            [(ngModel)]="patient.urgency" 
+                            name="urgency">
+                      <option value="" selected disabled>Select priority level</option>
+                      <option value="Low" class="text-success">🟢 Low Priority</option>
+                      <option value="Medium" class="text-warning">🟡 Medium Priority</option>
+                      <option value="High" class="text-danger">🔴 High Priority</option>
+                      <option value="Critical" class="text-dark">⚫ Critical Priority</option>
+                    </select>
+                    <div class="form-text text-muted mt-1">
+                      Set treatment priority based on condition severity
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row mt-5 pt-4 border-top">
+              <div class="col-12">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                  <button type="button" 
+                          class="btn btn-outline-secondary btn-lg px-4 rounded-3 w-100 w-md-auto order-2 order-md-1"
+                          routerLink="/docdash">
+                    <i class="bi bi-x-circle me-2"></i>Cancel
+                  </button>
+                  
+                  <div class="d-flex flex-column flex-md-row gap-3 order-1 order-md-2 w-100 w-md-auto">
+                    <button type="button" 
+                            class="btn btn-outline-info btn-lg px-4 rounded-3">
+                      <i class="bi bi-eye me-2"></i>Preview
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-primary btn-lg px-5 rounded-3 shadow-sm">
+                      <i class="bi bi-cloud-arrow-up me-2"></i>Update Patient Record
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="col-lg-4">
+      <!-- Statistics Card -->
+      <div class="card border-0 shadow-lg rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-4 d-flex align-items-center">
+            <i class="bi bi-graph-up me-2 text-primary"></i>Patient Stats
+          </h5>
+          
+          <div class="row g-3 text-center mb-4">
+  <div class="col-4">
+    <div class="border-0 rounded-3 p-3 bg-primary">
+      <div class="fw-bold fs-4 text-white">12</div>
+      <div class="small text-white-75">Visits</div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label>Blood Group</label>
-    <input class="form-control" [(ngModel)]="patient.blood" name="blood">
+  <div class="col-4">
+    <div class="border-0 rounded-3 p-3 bg-success">
+      <div class="fw-bold fs-4 text-white">8</div>
+      <div class="small text-white-75">Prescriptions</div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label>Prescription</label>
-    <input class="form-control" [(ngModel)]="patient.prescription" name="prescription">
+  <div class="col-4">
+    <div class="border-0 rounded-3 p-3 bg-warning bg-opacity-100">
+      <div class="fw-bold fs-4 text-white">30d</div>
+      <div class="small text-white-75">Last Visit</div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label>Dose</label>
-    <input class="form-control" [(ngModel)]="patient.dose" name="dose">
-  </div>
-
-  <div class="form-group">
-    <label>Fees</label>
-    <input class="form-control" [(ngModel)]="patient.fees" name="fees">
-  </div>
-
-  <div class="form-group">
-    <label>Urgency</label>
-    <input class="form-control" [(ngModel)]="patient.urgency" name="urgency">
-  </div>
-  <br>
-
-  <button type="submit" class="btn btn-success">Submit</button>
-
-    </form>
-
 </div>
+
+          <!-- Alert Box -->
+          <div class="alert alert-warning border-warning border-2 rounded-3 d-flex align-items-start" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-3 fs-4 flex-shrink-0"></i>
+            <div>
+              <div class="fw-bold mb-1">Medical Alert</div>
+              <div class="small">Patient has a known allergy to Penicillin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update History -->
+      <div class="card border-0 shadow-lg rounded-4">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-4 d-flex align-items-center">
+            <i class="bi bi-clock-history me-2 text-primary"></i>Recent Updates
+          </h5>
+          
+          <div class="list-group list-group-flush">
+            <div class="list-group-item px-0 py-3 border-bottom">
+              <div class="d-flex w-100 justify-content-between align-items-start mb-1">
+                <div class="fw-semibold">Prescription Updated</div>
+                <small class="text-muted">Today, 10:30 AM</small>
+              </div>
+              <small class="text-muted">Dosage adjusted per latest test results</small>
+            </div>
+            
+            <div class="list-group-item px-0 py-3 border-bottom">
+              <div class="d-flex w-100 justify-content-between align-items-start mb-1">
+                <div class="fw-semibold">Record Reviewed</div>
+                <small class="text-muted">Yesterday, 3:45 PM</small>
+              </div>
+              <small class="text-muted">Blood test results added to file</small>
+            </div>
+            
+            <div class="list-group-item px-0 py-3">
+              <div class="d-flex w-100 justify-content-between align-items-start mb-1">
+                <div class="fw-semibold">Initial Consultation</div>
+                <small class="text-muted">Oct 15, 2024</small>
+              </div>
+              <small class="text-muted">Patient record created</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card border-0 shadow-lg rounded-4 mt-4">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-4 d-flex align-items-center">
+            <i class="bi bi-lightning-charge me-2 text-primary"></i>Quick Actions
+          </h5>
+          
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-primary btn-lg rounded-3">
+              <i class="bi bi-printer me-2"></i>Print Record
+            </button>
+            <button class="btn btn-outline-success btn-lg rounded-3">
+              <i class="bi bi-prescription me-2"></i>New Prescription
+            </button>
+            <button class="btn btn-outline-info btn-lg rounded-3">
+              <i class="bi bi-calendar-plus me-2"></i>Schedule Follow-up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer Note -->
+<footer class="container-fluid bg-light border-top mt-5 py-3">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="text-muted small">
+          <i class="bi bi-shield-lock me-1"></i>
+          All patient data is encrypted and HIPAA compliant
+        </div>
+      </div>
+      <div class="col-md-6 text-end">
+        <div class="text-muted small">
+          Last updated: <span class="fw-semibold">Just now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

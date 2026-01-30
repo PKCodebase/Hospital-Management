@@ -17,6 +17,7 @@ export class Medicinelist implements OnInit {
 
 
   medicines:Medicine[]=[];
+  currentDate = new Date();
   constructor(private medicineService:MedicineService,private cdr: ChangeDetectorRef,private router:Router){}
 
   ngOnInit():void{

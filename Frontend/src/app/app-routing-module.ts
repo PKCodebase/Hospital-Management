@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'create-medicine',component:CreateMedicine},
   {path:'update-patient/:id',component:UpdatePatient},
   {path:'view-patient/:id',component:ViewComponent},
-  {path:"update-medicine/:id",component:UpdateMedicine}
+  {path:'update-medicine/:id',component:UpdateMedicine}
 ];
 
 @NgModule({
