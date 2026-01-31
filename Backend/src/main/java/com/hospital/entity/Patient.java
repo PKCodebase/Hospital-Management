@@ -22,6 +22,8 @@ public class Patient {
     @Column(name = "prescription")
     private String prescription;
 
+//    kl
+
     @Column(name="dose")
     private String dose;
 
