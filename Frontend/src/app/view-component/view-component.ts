@@ -13,6 +13,9 @@ export class ViewComponent implements OnInit {
 
   id:number=0;
   patient:Patient=new Patient();
+  errorMessage:string='';
+
+  // id:any;
 
   constructor(private patientService:PatientService,private route:ActivatedRoute,private cdr:ChangeDetectorRef, private router: Router){}
 
